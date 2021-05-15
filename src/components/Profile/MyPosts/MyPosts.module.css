@@ -2,3 +2,10 @@
   grid-area: c;
   background-color: coral;
 }
+
+.my_posts {
+  padding: 1em;
+}
+
+.add_new_post {
+}

@@ -1,13 +1,11 @@
 import React from "react";
 import MyPosts from "./MyPosts/MyPosts";
 import s from "./Profile.module.css";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 function Profile() {
   return (
-    <div className={s.content}>
-      <div className="card">
-        <img src="images/img-3.jpg" alt="" className="card-img" />
-      </div>
-      <div className="ava-dis">ava + discription</div>
+    <div>
+      <ProfileInfo />
       <MyPosts />
     </div>
   );

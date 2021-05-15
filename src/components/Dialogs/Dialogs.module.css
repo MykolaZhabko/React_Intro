@@ -1,0 +1,20 @@
+.dialogs {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}
+
+.contact_items {
+}
+
+.dialog {
+}
+
+.messages_container {
+}
+
+.message {
+}
+
+.active {
+  color: gold;
+}

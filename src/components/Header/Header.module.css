@@ -1,8 +1,8 @@
 .header {
   grid-area: h;
-  background-color: burlywood;
+  background-color: rgb(49, 195, 221);
 }
 
 .header img {
-  width: 50px;
+  width: 60px;
 }
