@@ -5,20 +5,43 @@ import Message from "./Message/Message";
 import css from "./Dialogs.module.css";
 
 const Dialogs = (props) => {
+
+  let dialogData = [
+    { id: 1, name: "Mykola" },
+    { id: 2, name: "Olena" },
+    { id: 3, name: "Gabriella" },
+    { id: 4, name: "Sofija" },
+    { id: 5, name: "Beatrice" },
+    { id: 6, name: "Daniela" }
+  ];
+
+  let dialogElements = dialogData.map(el => {
+    return <DialogItem id={el.id} contact={el.name} />
+    }
+  )
+  
+  let messageData = [
+    { id: 1, message: "How are you?" },
+    { id: 2, message: "What is your name" },
+    { id: 3, message: "Try to check my profile!" }
+   
+  ];
+
+  let messageElement = messageData.map(el => <Message message={el.message} />)
+
   return (
     <div className={css.dialogs}>
       <div className={css.contact_items}>
-        <DialogItem id="1" contact="Mykola" />
-        <DialogItem id="2" contact="Olena" />
-        <DialogItem id="3" contact="Gabriella" />
-        <DialogItem id="4" contact="Sofija" />
-        <DialogItem id="5" contact="Beatrice" />
-        <DialogItem id="6" contact="Daniela" />
+        {
+          dialogElements
+        }
       </div>
       <div className={css.messages_container}>
-        <Message message="Haw are you?" />
-        <Message message="What is you name?" />
-        <Message message="Try to check my profile! " />
+        {
+          messageElement
+        }
+      
+      
       </div>
     </div>
   );

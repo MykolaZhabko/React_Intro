@@ -3,6 +3,16 @@ import css from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 function MyPosts() {
+
+  let postData = [
+    { id: 1, message: "Hello React and World!", like_count: 33 },
+    { id: 2, message: "Hello React and Mykola!", like_count: 40 }
+  ];
+
+  
+  let postElement = postData.map(el => <Post message={el.message} like_count={el.like_count} />);
+
+
   return (
     <div className={css.my_posts}>
       <h3>My posts</h3>
@@ -20,8 +30,7 @@ function MyPosts() {
         </div>
       </div>
       <div>New post</div>
-      <Post message="Hello World!" like_count="33" />
-      <Post message="Hello React" like_count="40" />
+        {postElement}
     </div>
   );
 }
