@@ -1,2 +1,38 @@
 .message {
+  background-color: white;
+  width: 70%;
+}
+
+.message_from_me {
+  background-color: #b9e4ef;
+
+  width: 20vw;
+  margin-left: 30vw;
+  border-radius: 20px;
+  margin-top: 1em;
+}
+
+.from {
+  padding: 0;
+  margin: 0;
+  padding-left: 1em;
+  padding-top: 0.5em;
+}
+
+.message_area {
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  padding: 2em;
+  margin: 0.5em;
+}
+
+.time {
+  padding-left: 1em;
+}
+
+.message_from_friend {
+  background-color: #4b6065;
+  width: 20vw;
+  border-radius: 20px;
+  margin-top: 1em;
 }

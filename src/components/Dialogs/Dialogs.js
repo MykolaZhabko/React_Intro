@@ -5,43 +5,37 @@ import Message from "./Message/Message";
 import css from "./Dialogs.module.css";
 
 const Dialogs = (props) => {
+  let dialogElements = props.state.contacts.map((el) => {
+    return <DialogItem time={el.id} contact={el.name} />;
+  });
 
-  let dialogData = [
-    { id: 1, name: "Mykola" },
-    { id: 2, name: "Olena" },
-    { id: 3, name: "Gabriella" },
-    { id: 4, name: "Sofija" },
-    { id: 5, name: "Beatrice" },
-    { id: 6, name: "Daniela" }
-  ];
+  let messageElement = props.state.dialogs.map((el) => (
+    <Message time={el.time} person={el.person} message={el.message} />
+  ));
 
-  let dialogElements = dialogData.map(el => {
-    return <DialogItem id={el.id} contact={el.name} />
-    }
-  )
-  
-  let messageData = [
-    { id: 1, message: "How are you?" },
-    { id: 2, message: "What is your name" },
-    { id: 3, message: "Try to check my profile!" }
-   
-  ];
+  let textMessage = React.createRef();
 
-  let messageElement = messageData.map(el => <Message message={el.message} />)
+  let addTextMessage = () => {
+    let text = textMessage.current.value;
+    alert(text);
+  };
 
   return (
     <div className={css.dialogs}>
-      <div className={css.contact_items}>
-        {
-          dialogElements
-        }
-      </div>
+      <div className={css.contact_items}>{dialogElements}</div>
       <div className={css.messages_container}>
-        {
-          messageElement
-        }
-      
-      
+        {messageElement}
+        <div className={css.text_message}>
+          <textarea
+            name="new_message"
+            ref={textMessage}
+            id="new_message"
+            cols="30"
+            rows="10"
+          ></textarea>{" "}
+          <br />
+          <button onClick={addTextMessage}>Send</button>
+        </div>
       </div>
     </div>
   );

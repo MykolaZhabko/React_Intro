@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Friends from "./Friends/Friends";
 import s from "./NavBar.module.css";
 
 function NavBar() {
@@ -30,6 +31,8 @@ function NavBar() {
           Settings
         </NavLink>
       </div>
+
+      <Friends />
     </nav>
   );
 }

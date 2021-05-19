@@ -4,12 +4,15 @@
 }
 
 .contact_items {
+  padding: 1em;
 }
 
 .dialog {
 }
 
 .messages_container {
+  background-color: rgb(156, 149, 149);
+  padding: 1em;
 }
 
 .message {
@@ -17,4 +20,9 @@
 
 .active {
   color: gold;
+}
+
+.text_message {
+  border: 1px solid red;
+  text-align: center;
 }

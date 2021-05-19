@@ -4,7 +4,10 @@ import s from "./Header.module.css";
 function Header() {
   return (
     <header className={s.header}>
-      <img src="images/fox.png" alt="" />
+      <div className={s.logo}>
+        <h3>My Social Network</h3>
+        <img src="images/logo1.svg" alt="" />
+      </div>
     </header>
   );
 }
