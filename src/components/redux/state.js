@@ -5,6 +5,7 @@ let state = {
       { id: 2, message: "Hello React and Mykola!", like_count: 40 },
       { id: 3, message: "Passing props from INDEX.js", like_count: 100 },
     ],
+    newPostText: "Zhabko Mykola",
   },
   messagesPage: {
     contacts: [
@@ -24,6 +25,36 @@ let state = {
       { time: 123, person: "Ikin", message: "Are you kidding me?" },
     ],
   },
+};
+
+export const addPost = () => {
+  let newPost = {
+    id: 4,
+    message: state.profilePage.newPostText,
+    like_count: 0,
+  };
+  state.profilePage.posts.push(newPost);
+  rerenderEntireTree(state);
+  state.profilePage.newPostText = "";
+};
+
+export const updateNewPostText = (newText) => {
+  state.profilePage.newPostText = newText;
+  rerenderEntireTree(state);
+};
+
+/**
+ *
+ * @param {in} observer  - (the function you want to assign to rerenderEntireTree)
+ * And this function is a pattern called "OBSERVER"
+ * Used to avoid cycle imports
+ */
+export const subscribe = (observer) => {
+  rerenderEntireTree = observer;
+};
+
+let rerenderEntireTree = () => {
+  console.log("State is changed! ");
 };
 
 export default state;
