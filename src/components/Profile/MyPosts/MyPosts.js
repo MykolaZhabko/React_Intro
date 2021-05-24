@@ -3,13 +3,13 @@ import css from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 function MyPosts(props) {
-  let postElement = props.state.posts.map((el) => (
+  let postElement = props.posts.map((el) => (
     <Post message={el.message} like_count={el.like_count} />
   ));
 
   let newPostElement = React.createRef();
 
-  let addPost = () => {
+  let onAddPost = () => {
     props.addPost();
   };
 
@@ -27,13 +27,13 @@ function MyPosts(props) {
             name="new_post"
             ref={newPostElement}
             onChange={onPostChange}
-            value={props.state.newPostText}
+            value={props.newPostText}
             cols="30"
             rows="10"
           ></textarea>
         </div>
         <div>
-          <button onClick={addPost}>Add new post</button>
+          <button onClick={onAddPost}>Add new post</button>
         </div>
       </div>
       <div>New post</div>

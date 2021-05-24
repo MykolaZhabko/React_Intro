@@ -2,25 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { addPost } from "./components/redux/state";
-import { updateNewPostText } from "./components/redux/state";
 import { BrowserRouter } from "react-router-dom";
-import state, { subscribe } from "./components/redux/state";
-//addPost("Hello Before props!!");
+import store from "./components/redux/redux-store";
 
-let rerenderEntireTree = (state) => {
+let rerenderEntireTree = () => {
   ReactDOM.render(
     <BrowserRouter>
-      <App
-        state={state}
-        addPost={addPost}
-        updateNewPostText={updateNewPostText}
-      />
+      <App store={store} />
     </BrowserRouter>,
     document.getElementById("root")
   );
 };
+// store.state.profilePage.newPostText = "HelloReact!!";
+rerenderEntireTree();
 
-rerenderEntireTree(state);
-
-subscribe(rerenderEntireTree);
+store.subscribe(rerenderEntireTree);

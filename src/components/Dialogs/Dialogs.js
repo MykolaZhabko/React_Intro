@@ -3,21 +3,29 @@ import { NavLink } from "react-router-dom";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import css from "./Dialogs.module.css";
+import {
+  addNewMessageActionCreator,
+  updateNewMessageTextActionCreator,
+} from "../redux/dialogs-reducer";
 
 const Dialogs = (props) => {
-  let dialogElements = props.state.contacts.map((el) => {
+  let dialogElements = props.contacts.map((el) => {
     return <DialogItem time={el.id} contact={el.name} />;
   });
 
-  let messageElement = props.state.dialogs.map((el) => (
+  let messageElement = props.dialogs.map((el) => (
     <Message time={el.time} person={el.person} message={el.message} />
   ));
 
   let textMessage = React.createRef();
 
-  let addTextMessage = () => {
+  let onUpdateMessageText = () => {
     let text = textMessage.current.value;
-    alert(text);
+    props.updateMessageText(text);
+  };
+
+  let onAddNewTextMessage = () => {
+    props.addNewTextMessage();
   };
 
   return (
@@ -29,12 +37,14 @@ const Dialogs = (props) => {
           <textarea
             name="new_message"
             ref={textMessage}
+            onChange={onUpdateMessageText}
+            value={props.newMessageText}
             id="new_message"
             cols="30"
             rows="10"
           ></textarea>{" "}
           <br />
-          <button onClick={addTextMessage}>Send</button>
+          <button onClick={onAddNewTextMessage}>Send</button>
         </div>
       </div>
     </div>
