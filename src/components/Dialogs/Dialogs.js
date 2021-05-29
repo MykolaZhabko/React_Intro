@@ -9,11 +9,13 @@ import {
 } from "../redux/dialogs-reducer";
 
 const Dialogs = (props) => {
-  let dialogElements = props.contacts.map((el) => {
+  console.log("Dialogs");
+  console.log(props);
+  let dialogElements = props.messagesPage.contacts.map((el) => {
     return <DialogItem time={el.id} contact={el.name} />;
   });
 
-  let messageElement = props.dialogs.map((el) => (
+  let messageElement = props.messagesPage.dialogs.map((el) => (
     <Message time={el.time} person={el.person} message={el.message} />
   ));
 
@@ -38,7 +40,7 @@ const Dialogs = (props) => {
             name="new_message"
             ref={textMessage}
             onChange={onUpdateMessageText}
-            value={props.newMessageText}
+            value={props.messagesPage.newMessageText}
             id="new_message"
             cols="30"
             rows="10"

@@ -4,19 +4,13 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import store from "./components/redux/redux-store";
-import StoreContext from "./StoreContext";
+import { Provider } from "react-redux";
 
-let rerenderEntireTree = () => {
-  ReactDOM.render(
-    <BrowserRouter>
-      <StoreContext.Provider value={store}>
-        <App store={store} />
-      </StoreContext.Provider>
-    </BrowserRouter>,
-    document.getElementById("root")
-  );
-};
-// store.state.profilePage.newPostText = "HelloReact!!";
-rerenderEntireTree();
-
-store.subscribe(rerenderEntireTree);
+ReactDOM.render(
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>,
+  document.getElementById("root")
+);

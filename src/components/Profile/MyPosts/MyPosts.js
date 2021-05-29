@@ -3,6 +3,8 @@ import css from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 function MyPosts(props) {
+  console.log("Mykla Here");
+  console.log(props);
   let postElement = props.posts.map((el) => (
     <Post message={el.message} like_count={el.like_count} />
   ));
