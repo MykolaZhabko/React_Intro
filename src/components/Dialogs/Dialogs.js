@@ -6,16 +6,16 @@ import css from "./Dialogs.module.css";
 
 const Dialogs = (props) => {
 
-  let dialogData = [
-    { id: 1, name: "Mykola" },
-    { id: 2, name: "Olena" },
-    { id: 3, name: "Gabriella" },
-    { id: 4, name: "Sofija" },
-    { id: 5, name: "Beatrice" },
-    { id: 6, name: "Daniela" }
-  ];
+  // let dialogData = [
+  //   { id: 1, name: "Mykola" },
+  //   { id: 2, name: "Olena" },
+  //   { id: 3, name: "Gabriella" },
+  //   { id: 4, name: "Sofija" },
+  //   { id: 5, name: "Beatrice" },
+  //   { id: 6, name: "Daniela" }
+  // ];
 
-  let dialogElements = dialogData.map(el => {
+  let dialogElements = props.map(el => {
     return <DialogItem id={el.id} contact={el.name} />
     }
   )
