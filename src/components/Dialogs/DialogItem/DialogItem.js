@@ -6,6 +6,7 @@ function DialogItem(props) {
   let path = "/dialogs/" + props.id;
   return (
     <div className={css.contact}>
+      <img src="images/person1.png" alt="" />
       <NavLink to={path}>{props.contact}</NavLink>
     </div>
   );

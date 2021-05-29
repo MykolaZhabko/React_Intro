@@ -1,0 +1,18 @@
+.container {
+  text-align: center;
+  padding-top: 3em;
+}
+
+.container h3 {
+  color: rgb(69, 212, 33);
+  font-size: 2em;
+}
+.friends_container {
+  display: flex;
+  color: white;
+}
+
+.one_persone {
+  margin: 0.5em;
+  text-align: center;
+}

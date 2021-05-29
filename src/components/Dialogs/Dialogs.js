@@ -3,45 +3,51 @@ import { NavLink } from "react-router-dom";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import css from "./Dialogs.module.css";
+import {
+  addNewMessageActionCreator,
+  updateNewMessageTextActionCreator,
+} from "../redux/dialogs-reducer";
 
 const Dialogs = (props) => {
+  console.log("Dialogs");
+  console.log(props);
+  let dialogElements = props.messagesPage.contacts.map((el) => {
+    return <DialogItem time={el.id} contact={el.name} />;
+  });
 
-  // let dialogData = [
-  //   { id: 1, name: "Mykola" },
-  //   { id: 2, name: "Olena" },
-  //   { id: 3, name: "Gabriella" },
-  //   { id: 4, name: "Sofija" },
-  //   { id: 5, name: "Beatrice" },
-  //   { id: 6, name: "Daniela" }
-  // ];
+  let messageElement = props.messagesPage.dialogs.map((el) => (
+    <Message time={el.time} person={el.person} message={el.message} />
+  ));
 
-  let dialogElements = props.map(el => {
-    return <DialogItem id={el.id} contact={el.name} />
-    }
-  )
-  
-  let messageData = [
-    { id: 1, message: "How are you?" },
-    { id: 2, message: "What is your name" },
-    { id: 3, message: "Try to check my profile!" }
-   
-  ];
+  let textMessage = React.createRef();
 
-  let messageElement = messageData.map(el => <Message message={el.message} />)
+  let onUpdateMessageText = () => {
+    let text = textMessage.current.value;
+    props.updateMessageText(text);
+  };
+
+  let onAddNewTextMessage = () => {
+    props.addNewTextMessage();
+  };
 
   return (
     <div className={css.dialogs}>
-      <div className={css.contact_items}>
-        {
-          dialogElements
-        }
-      </div>
+      <div className={css.contact_items}>{dialogElements}</div>
       <div className={css.messages_container}>
-        {
-          messageElement
-        }
-      
-      
+        {messageElement}
+        <div className={css.text_message}>
+          <textarea
+            name="new_message"
+            ref={textMessage}
+            onChange={onUpdateMessageText}
+            value={props.messagesPage.newMessageText}
+            id="new_message"
+            cols="30"
+            rows="10"
+          ></textarea>{" "}
+          <br />
+          <button onClick={onAddNewTextMessage}>Send</button>
+        </div>
       </div>
     </div>
   );

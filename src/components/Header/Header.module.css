@@ -1,8 +1,20 @@
 .header {
   grid-area: h;
-  background-color: rgb(49, 195, 221);
+  background-color: rgb(36, 35, 35);
 }
 
 .header img {
   width: 60px;
+}
+
+.logo {
+  display: flex;
+  /* border: 1px solid rebeccapurple; */
+  width: fit-content;
+  margin-top: 1em;
+  margin-left: 1em;
+}
+
+.logo h3 {
+  color: white;
 }

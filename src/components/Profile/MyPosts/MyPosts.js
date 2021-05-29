@@ -2,16 +2,23 @@ import React from "react";
 import css from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-function MyPosts() {
+function MyPosts(props) {
+  console.log("Mykla Here");
+  console.log(props);
+  let postElement = props.posts.map((el) => (
+    <Post message={el.message} like_count={el.like_count} />
+  ));
 
-  let postData = [
-    { id: 1, message: "Hello React and World!", like_count: 33 },
-    { id: 2, message: "Hello React and Mykola!", like_count: 40 }
-  ];
+  let newPostElement = React.createRef();
 
-  
-  let postElement = postData.map(el => <Post message={el.message} like_count={el.like_count} />);
+  let onAddPost = () => {
+    props.addPost();
+  };
 
+  let onPostChange = () => {
+    let text = newPostElement.current.value;
+    props.updateNewPostText(text);
+  };
 
   return (
     <div className={css.my_posts}>
@@ -20,17 +27,19 @@ function MyPosts() {
         <div>
           <textarea
             name="new_post"
-            id="new_post"
+            ref={newPostElement}
+            onChange={onPostChange}
+            value={props.newPostText}
             cols="30"
             rows="10"
           ></textarea>
         </div>
         <div>
-          <button>Add new post</button>
+          <button onClick={onAddPost}>Add new post</button>
         </div>
       </div>
       <div>New post</div>
-        {postElement}
+      {postElement}
     </div>
   );
 }

@@ -2,14 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+import store from "./components/redux/redux-store";
+import { Provider } from "react-redux";
 
-let dialogData = [
-    { id: 1, name: "Mykola" },
-    { id: 2, name: "Olena" },
-    { id: 3, name: "Gabriella" },
-    { id: 4, name: "Sofija" },
-    { id: 5, name: "Beatrice" },
-    { id: 6, name: "Daniela" }
-  ];
-
-ReactDOM.render(<App props={dialogData}/>, document.getElementById("root"));
+ReactDOM.render(
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>,
+  document.getElementById("root")
+);
